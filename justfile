@@ -61,4 +61,14 @@ show-logs:
     @cat /tmp/com.uv.upgrade.out /tmp/com.uv.upgrade.err 2>/dev/null || echo "No logs found"
 
 format:
+    just format-justfile
+    just format-plists
+
+format-justfile:
     just --unstable --fmt
+
+format-plists:
+    plutil -convert xml1 com.gh.upgrade.plist
+    plutil -convert xml1 com.terraform.upgrade.plist
+    plutil -convert xml1 com.uv.upgrade.plist
+    @echo "All plist files formatted"
