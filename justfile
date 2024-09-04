@@ -4,21 +4,21 @@ default:
     @just --list
 
 install-github:
-    mkdir -p "{{LAUNCH_AGENTS}}"
-    cp com.gh.upgrade.plist "{{LAUNCH_AGENTS}}/"
-    launchctl load "{{LAUNCH_AGENTS}}/com.gh.upgrade.plist"
+    mkdir -p "{{ LAUNCH_AGENTS }}"
+    cp com.gh.upgrade.plist "{{ LAUNCH_AGENTS }}/"
+    launchctl load "{{ LAUNCH_AGENTS }}/com.gh.upgrade.plist"
     @echo "GitHub CLI upgrade job installed"
 
 install-terraform:
-    mkdir -p "{{LAUNCH_AGENTS}}"
-    cp com.terraform.upgrade.plist "{{LAUNCH_AGENTS}}/"
-    launchctl load "{{LAUNCH_AGENTS}}/com.terraform.upgrade.plist"
+    mkdir -p "{{ LAUNCH_AGENTS }}"
+    cp com.terraform.upgrade.plist "{{ LAUNCH_AGENTS }}/"
+    launchctl load "{{ LAUNCH_AGENTS }}/com.terraform.upgrade.plist"
     @echo "Terraform upgrade job installed"
 
 install-uv:
-    mkdir -p "{{LAUNCH_AGENTS}}"
-    cp com.uv.upgrade.plist "{{LAUNCH_AGENTS}}/"
-    launchctl load "{{LAUNCH_AGENTS}}/com.uv.upgrade.plist"
+    mkdir -p "{{ LAUNCH_AGENTS }}"
+    cp com.uv.upgrade.plist "{{ LAUNCH_AGENTS }}/"
+    launchctl load "{{ LAUNCH_AGENTS }}/com.uv.upgrade.plist"
     @echo "uv upgrade job installed"
 
 install-all: install-github install-terraform install-uv
@@ -26,18 +26,18 @@ install-all: install-github install-terraform install-uv
     @just list-loaded
 
 uninstall-github:
-    launchctl unload "{{LAUNCH_AGENTS}}/com.gh.upgrade.plist"
-    rm "{{LAUNCH_AGENTS}}/com.gh.upgrade.plist"
+    launchctl unload "{{ LAUNCH_AGENTS }}/com.gh.upgrade.plist"
+    rm "{{ LAUNCH_AGENTS }}/com.gh.upgrade.plist"
     @echo "GitHub CLI upgrade job uninstalled"
 
 uninstall-terraform:
-    launchctl unload "{{LAUNCH_AGENTS}}/com.terraform.upgrade.plist"
-    rm "{{LAUNCH_AGENTS}}/com.terraform.upgrade.plist"
+    launchctl unload "{{ LAUNCH_AGENTS }}/com.terraform.upgrade.plist"
+    rm "{{ LAUNCH_AGENTS }}/com.terraform.upgrade.plist"
     @echo "Terraform upgrade job uninstalled"
 
 uninstall-uv:
-    launchctl unload "{{LAUNCH_AGENTS}}/com.uv.upgrade.plist"
-    rm "{{LAUNCH_AGENTS}}/com.uv.upgrade.plist"
+    launchctl unload "{{ LAUNCH_AGENTS }}/com.uv.upgrade.plist"
+    rm "{{ LAUNCH_AGENTS }}/com.uv.upgrade.plist"
     @echo "uv upgrade job uninstalled"
 
 uninstall-all: uninstall-github uninstall-terraform uninstall-uv
@@ -60,3 +60,5 @@ show-logs:
     @echo "\nuv upgrade logs:"
     @cat /tmp/com.uv.upgrade.out /tmp/com.uv.upgrade.err 2>/dev/null || echo "No logs found"
 
+format:
+    just --unstable --fmt
