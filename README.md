@@ -4,7 +4,7 @@ GitHub CLI (gh) frequently reports that it's out of date, which can be annoying.
 
 ## Features
 
-- Automatically updates GitHub CLI (gh) and Terraform using Homebrew
+- Automatically updates GitHub CLI (gh), Terraform, uv, and ourchester using Homebrew
 - Uses launchd to schedule daily updates
 - Easy installation and uninstallation using just commands
 
@@ -12,38 +12,34 @@ GitHub CLI (gh) frequently reports that it's out of date, which can be annoying.
 
 To install the auto-update services:
 
-1. Install both GitHub CLI and Terraform update services:
+1. Install all update services:
    ```
    just install-all
    ```
 
-2. To install only GitHub CLI update service:
+2. To install specific update services:
    ```
    just install-github
-   ```
-
-3. To install only Terraform update service:
-   ```
    just install-terraform
+   just install-uv
+   just install-ourchester
    ```
 
 ## Uninstallation
 
 To uninstall the auto-update services:
 
-1. Uninstall both GitHub CLI and Terraform update services:
+1. Uninstall all update services:
    ```
    just uninstall-all
    ```
 
-2. To uninstall only GitHub CLI update service:
+2. To uninstall specific update services:
    ```
    just uninstall-github
-   ```
-
-3. To uninstall only Terraform update service:
-   ```
    just uninstall-terraform
+   just uninstall-uv
+   just uninstall-ourchester
    ```
 
 ## Usage
@@ -60,11 +56,11 @@ To uninstall the auto-update services:
 
 For more commands, run `just --list` to see all available options.
 
-
-
-## related
+## Related
 
 - [just](https://github.com/casey/just) - Command runner used for installation and management
 - [Homebrew](https://brew.sh/) - Package manager for macOS
 - [GitHub CLI (gh)](https://cli.github.com/) - GitHub's official command line tool
 - [Terraform](https://www.terraform.io/) - Infrastructure as Code tool
+- [uv](https://github.com/astral-sh/uv) - Python packaging and dependency management tool
+- [ourchester](https://github.com/taylormonacelli/ourchester) - Custom indexing tool
